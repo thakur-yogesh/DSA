@@ -12,11 +12,11 @@ public:
         siz=0;
         capacity=c;
     }
-    int leftchile(int i)
+    int leftchild(int i)
     {
         return ((2*i+1)/2);
     }
-    int rightchile(int i)
+    int rightchild(int i)
     {
         return ((2*i+2)/2);
     }
