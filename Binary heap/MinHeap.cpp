@@ -3,13 +3,13 @@ using namespace std;
 class minheap{
 public:
     int  *arr;
-    int siz;
+    int _size;
     int capacity;
 
     minheap(int c)
     {
         arr=new int[c];
-        siz=0;
+        _size=0;
         capacity=c;
     }
     int leftchild(int i)
@@ -33,14 +33,14 @@ public:
     }
     void push(int i)
     {
-        if(siz==capacity)
+        if(_size==capacity)
         {
-            cout<<"hpgya bhai\n";
+            cout<<"hogya bhai\n";
             return;
         }
-        siz++;
-        arr[siz-1]=i;
-        for(int x=siz-1;x!=0&&arr[parent(x)]>arr[x];)
+        _size++;
+        arr[_size-1]=i;
+        for(int x=_size-1;x!=0&&arr[parent(x)]>arr[x];)
         {
             swap(&arr[x],&arr[parent(x)]);
             x=parent(x);
@@ -48,7 +48,7 @@ public:
     }
     void print()
     {
-        for(int i=0;i<siz;i++)
+        for(int i=0;i<_size;i++)
         {
             cout<<arr[i]<<" ";
         }
