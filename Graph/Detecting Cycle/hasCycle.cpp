@@ -51,7 +51,7 @@ bool hasCycle(vector<int> adj[],int V,int source)
     {
         if(visited[v]==false)
         {
-            if((checkCycle(adj,v,visited,-1)==true)
+            if(checkCycle(adj,v,visited,-1)==true)
                return true;
         }
     }
