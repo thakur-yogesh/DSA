@@ -1,5 +1,5 @@
 #include<iostream>
-#define MAX 10000
+#define MAX 100
 using namespace std;
 
 void swap(int *a,int *b)
@@ -10,41 +10,40 @@ void swap(int *a,int *b)
     *b = t;
 }
 
-void minHeapify(int arr[],int root,int heap_size)
+void minHeapify(int arr[],int parent,int size__)
 {
-    int left_child = 2 * root + 1;
-    int right_chile = 2 * root + 2;
-    int smallest;
-    if(left_child<=heap_size&&arr[left_child]<arr[root])
+    int left_child = 2*parent + 1;
+    int right_child = 2*parent + 2;
+    int smallest = parent;
+
+    if(left_child<size__&&arr[left_child]<arr[parent])
         smallest = left_child;
-    else
-        smallest = root;
-    if(right_chile<=heap_size&&arr[right_chile]<arr[root])
-        smallest = right_chile;
-    if(smallest!=root){
-        swap(&arr[root],&arr[smallest]);
-        minHeapify(arr,smallest,heap_size);
+    if(right_child<size__&&arr[right_child]<arr[smallest])
+        smallest = right_child;
+    if(smallest!=parent)
+    {
+        swap(&arr[parent],&arr[smallest]);
+        minHeapify(arr,smallest,size__);
     }
 }
 
-void buildHeap(int arr[],int heap_size)
+void buildHeap(int arr[],int size_)
 {
-    for(int i = ((heap_size-2)/2);i>=0;i--)
-        {
-            minHeapify(arr,i,heap_size);
-        }
+    int parent_of_last_leaf = (size_-2)/2;
+    for(int i = parent_of_last_leaf;i>=0;i--)
+        minHeapify(arr,i,size_);
 }
 
 int main()
 {
-    int arr[MAX],i,n;
+    int a[MAX],i,j,n;
     cout<<"enter the size of the array\n";
     cin>>n;
     cout<<"enter the elements in the array\n";
     for(i=0;i<n;i++)
-        cin>>arr[i];
-    buildHeap(arr,n-1);
-    cout<<"after heapifying the array: \n";
+        cin>>a[i];
+    cout<<"after building the min heap\n";
+    buildHeap(a,n);
     for(i=0;i<n;i++)
-        cout<<arr[i]<<" ";
+        cout<<a[i]<<" ";
 }
