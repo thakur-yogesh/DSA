@@ -37,7 +37,6 @@ void buildHeap(int arr[])
         minHeapify(arr,i);
 }
 
-
 int parent(int i)
 {
     return (i-1)/2;
@@ -57,6 +56,16 @@ void decreaseKey(int arr[],int index,int key)
     }
 }
 
+void insertKey(int arr[],int key)
+{
+    if(heap_size>=MAX)
+       cout<<"heap overflow\n";
+    else{
+        arr[heap_size++] = sizeof(int);
+        decreaseKey(arr,heap_size-1,key);
+    }
+}
+
 int main()
 {
     system("COLOR 0A");
@@ -70,12 +79,11 @@ int main()
     cout<<"heap : ";
     for(i=0;i<heap_size;i++)
         cout<<a[i]<<" ";
-    cout<<"\n\nheap is 0 indexed \n";
-    cout<<"\nenter the index which is to be decreased and the key\n";
-    int key,index;
-    cin>>index>>key;
-    decreaseKey(a,index,key);
-    cout<<"\nupdated heap :";
+    cout<<endl<<"enter the key which is to be inserted\n";
+    int key;
+    cin>>key;
+    insertKey(a,key);
+    cout<<endl<<"updated heap: ";
     for(i=0;i<heap_size;i++)
         cout<<a[i]<<" ";
 }
